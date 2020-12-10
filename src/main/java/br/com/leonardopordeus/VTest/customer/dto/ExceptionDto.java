@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class ExceptionDto implements Serializable {
 	
-	final long serialVersionUID = 4118741562439742337L;
+	private static final long serialVersionUID = 1802560594189357531L;
 	
 	private String type;
 	private String message;

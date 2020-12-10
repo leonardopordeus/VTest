@@ -17,6 +17,7 @@ import javax.persistence.Table;
 
 /**
  * Entity class for Customers
+ * 
  * @author leonardo.pordeus
  *
  */
@@ -28,27 +29,42 @@ public class Customer implements Serializable {
 
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(name = "DOCUMENT_ID", nullable = false)
 	private String documentId;
-	
+
 	@Column(name = "NAME", nullable = false)
 	private String name;
-	
+
 	@Column(name = "AGE")
 	private Integer age;
-	
+
 	@Column(name = "REGISTRATION_DATE", nullable = false)
 	private Date registrationDate;
-	
+
 	@Column(name = "LAST_UPDATE", nullable = false)
 	private Date lastUpdate;
-	
+
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "CUSTOMER_ADDRESS", joinColumns = @JoinColumn(name = "ID_CUSTOMER"), inverseJoinColumns = @JoinColumn(name = "ID_ADDRESS"))
 	private List<Address> addresses;
+
+	public Customer() {
+		super();
+	}
+
+	public Customer(Long id) {
+		super();
+		this.id = id;
+	}
+	
+	public Customer(Long id, String documentId) {
+		super();
+		this.id = id;
+		this.documentId = documentId;
+	}
 
 	public Long getId() {
 		return id;
@@ -130,6 +146,5 @@ public class Customer implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
+
 }
